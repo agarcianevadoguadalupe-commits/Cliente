@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang = "es">
+    <script>
+        //CREAR EL OBJETO PERSONA
+        let persona = {
+            nombre: "María",
+            edad: 21,
+            ciudad: "Navarra"
+        };
+
+        console.log(persona);
+
+        //OBJETO COCHE
+        let coche = { marca: "Toyota", modelo: "Corolla", año: 2020 };
+
+        console.log(coche.marca);
+        coche.año = 2024;
+        coche.color = "rojo";
+
+        console.log(coche);
+
+        //OBJETO ANIMAL
+        let animal = {
+            tipo: "felino",
+            nombre: "tilcayo",
+            edad: 2
+        };
+
+        delete animal.edad;
+        
+        console.log(animal);
+        
+        //OBJETO EMPRESA
+        let empresa = {
+            nombre: "Bar Manolo",
+            direccion: {
+                calle: "Calle de los Olivos",
+                numero: 42,
+                ciudad: "Cáceres"
+            }
+        };
+
+        console.log(empresa);
+
+        //FUNCION FILTRAR
+        /*function filtrarPorTipo(obj, tipo){
+            if (tipo == "number"){
+                console.log(obj + ': ' + obj.edad);
+                console.log(obj + ': ' + obj.salario);
+            }else if (tipo == "bool" || tipo == "boolean"){
+                console.log(obj + ': ' + obj.activo);
+            }else if (tipo == "string"){
+                console.log(obj + ': ' + obj.nombre);
+            }
+        }*/
+
+        function filtrarPorTipo(obj, tipo){
+            for (let clave in obj){
+                if (typeof obj[clave] == tipo){
+                    console.log(clave + ': ' + obj[clave]);
+                }
+            }
+        }
+
+        let datos = { nombre: "Ana", edad: 25, activo: true, salario: 1200 };
+            console.log(filtrarPorTipo(datos, "number"));
+            // { edad: 25, salario: 1200 }
+    </script>
+</html>
