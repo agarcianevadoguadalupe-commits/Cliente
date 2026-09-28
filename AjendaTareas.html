@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <script>
+        let agenda = {
+            nombre: "Abraham",
+            tareas: []
+            };
+        
+        let tarea = {
+            descripcion: "",
+            prioridad: 0,
+            estado: ""
+        };
+        
+        agenda.agregarTarea = function(desc, prior){
+            prior = parseInt(prior);
+
+            if (prior < 1 || prior > 3){
+                alert("Valor introducido en prioridad erróneo.")
+            } else {
+                let nuevo = {
+                    descripcion: desc,
+                    prioridad: prior,
+                    estado: "pendiente"
+                };
+
+                agenda.tareas.push(nuevo);
+            }
+        }
+
+        agenda.listarTareas = function(){
+            for (const tarea of agenda.tareas) {
+                console.log(`Descripción: ${tarea.descripcion}, Prioridad: ${tarea.prioridad}, Estado: ${tarea.estado}`);
+            }
+            
+        }
+
+        agenda.marcarCompletada = function(indice){
+            if (indice < 0 || indice >= this.tareas.length){
+                alert("Valor introducido como índice erróneo.");
+            } else {
+                agenda.tareas[indice].estado = "completado";
+                alert("Tarea marcada como completada.");
+            }
+        }
+
+        agenda.eliminarTarea = function(indice){
+            if (indice < 0 || indice >= this.tareas.length){
+                alert("Valor introducido como índice erróneo.");
+            } else {
+                agenda.tareas.splice(indice, 1);
+                alert("Tarea eliminada.");
+            }
+        }
+
+        agenda.listarPendientes = function(){
+            let pendientes = [];
+
+            for (const tarea of agenda.tareas) {
+                if (tarea.estado == "pendiente")
+                    pendientes.push(tarea);
+            }
+
+            for (const tarea of pendientes) {
+                console.log(`Descripción: ${tarea.descripcion}, Prioridad: ${tarea.prioridad}, Estado: ${tarea.estado}`);
+            }
+        }
+
+        agenda.listarPendientes = function(){
+            agenda.tareas.sort((a, b) => a.prioridad - b.prioridad);
+        }
+
+    </script>
+</html>
